@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Uploader une image</title>
+</head>
+<body>
+    <h1>Uploader une image</h1>
+
+    {% if error %}
+        <p style="color:red">{{ error }}</p>
+    {% endif %}
+
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <label>Mot de passe: <input type="password" name="password" required></label><br><br>
+        <label>Fichier: <input type="file" name="file" accept="image/*" multiple required></label><br><br>
+        <button type="submit" >Uploader</button>
+    </form>
+
+    {% if path %}
+        <h2>Image uploadée avec succès !</h2>
+        <p><a href="{{ path }}" download>Télécharger l'image</a></p>
+        <img src="{{ path }}" alt="Image uploadée" style="max-width:500px;">
+    {% endif %}
+</body>
+</html>
